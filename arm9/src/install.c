@@ -422,48 +422,15 @@ bool install(char* fpath, bool systemTitle)
 		//blacklisted titles
 		{
 			//tid without region
-			u32 tidLow = (h->tid_low & 0xFFFFFF00);
-			if (!sdnandMode && (
-				(h->tid_high == 0x00030005 && (
-					tidLow == 0x484e4400 || // DS Download Play
-					tidLow == 0x484e4500 || // PictoChat
-					tidLow == 0x484e4900 || // Nintendo DSi Camera
-					tidLow == 0x484e4a00 || // Nintendo Zone
-					tidLow == 0x484e4b00    // Nintendo DSi Sound
-				)) || (h->tid_high == 0x00030015 && (
-					tidLow == 0x484e4200 || // System Settings
-					tidLow == 0x484e4600    // Nintendo DSi Shop
-				))) && (
-					(h->tid_low & 0xFF) == region || //only blacklist console region
-					(h->tid_low & 0xFF) == 'A' ||    //and 'A' (all region)
-					region == 0                      //if the region check failed somehow, blacklist everything
-				))
-			{
-				//check if title exists, if it does then show any error
-				//otherwise allow reinstalling it
-				char path[PATH_MAX];
-				sprintf(path, "nand:/title/%08lx/%08lx/content/title.tmd", h->tid_high, h->tid_low);
-				if (access(path, F_OK) == 0)
-				{
-					iprintf("\x1B[31m");	//red
-					iprintf("Error: ");
-					iprintf("\x1B[33m");	//yellow
-					iprintf("This title cannot be\ninstalled to SysNAND.\n");
-					iprintf("\x1B[47m");	//white
-					goto error;
-				}
-			}
 		}
 
-		//confirmation message
-		{
-			const char system[] = "\x1B[41mWARNING:\x1B[47m This is a system app,\ninstalling it is potentially\nmore risky than regular DSiWare.\n\x1B[33m";
-			const char areYouSure[] = "Are you sure you want to install\n";
-			char* msg = (char*)malloc(strlen(system) + strlen(areYouSure) + strlen(fpath) + 2);
-			if (sdnandMode || h->tid_high == 0x00030004)
-				sprintf(msg, "%s%s?\n", areYouSure, fpath);
-			else
-				sprintf(msg, "%s%s%s?\n", system, areYouSure, fpath);
+		const char system[] = "\x1B[41mWARNING:\x1B[47m This is a system app,\ninstalling it is potentially\nmore risky than regular DSiWare.\n\x1B[33m";
+		const char areYouSure[] = "Are you sure you want to install\n";
+		char* msg = (char*)malloc(strlen(system) + strlen(areYouSure) + strlen(fpath) + 2);
+		if (sdnandMode || h->tid_high == 0x00030004)
+			sprintf(msg, "%s%s?\n", areYouSure, fpath);
+		else
+			sprintf(msg, "%s%s%s?\n", system, areYouSure, fpath);
 
 			bool choice = choiceBox(msg);
 			free(msg);
