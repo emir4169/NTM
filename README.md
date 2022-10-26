@@ -3,6 +3,7 @@ A basic title manager for the Nintendo DSi supporting both hiyaCFW's SDNAND and 
 
 ## WARNING
 This can modify your internal system NAND! There is *always* a risk of **bricking**, albeit a bit higher now, when you modify NAND. Please proceed with caution. Having Unlaunch installed is also strongly recommended as it will likely protect you if something manages to go wrong.
+I AM NOT RESPONSIBLE IF YOU BRICK YOUR SYSTEM WITH THIS.
 
 ## Features
 - Install DSiWare and homebrew onto your hiyaCFW SDNAND and SysNAND DSi Menus
