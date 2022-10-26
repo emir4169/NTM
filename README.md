@@ -1,8 +1,8 @@
-# NAND Title Manager
-A basic title manager for the Nintendo DSi supporting both hiyaCFW's SDNAND and SysNAND, modified from JeffRuLz's Title Manager for HiyaCFW.
+# NAND Title Manager: Danger Fork
+A basic title manager for the Nintendo DSi supporting both hiyaCFW's SDNAND and SysNAND, modified from JeffRuLz's Title Manager for HiyaCFW, One of the limitations which is that you cant reinstall any system app is removed. ONLY FOR THOSE WHO KNOW WHAT THEY ARE DOING! (and are smart enough not to brick their entire system)
 
 ## WARNING
-This can modify your internal system NAND! There is *always* a risk of **bricking**, albeit small, when you modify NAND. Please proceed with caution. Having Unlaunch installed is also strongly recommended as it will likely protect you if something manages to go wrong.
+This can modify your internal system NAND! There is *always* a risk of **bricking**, albeit a bit higher now, when you modify NAND. Please proceed with caution. Having Unlaunch installed is also strongly recommended as it will likely protect you if something manages to go wrong.
 
 ## Features
 - Install DSiWare and homebrew onto your hiyaCFW SDNAND and SysNAND DSi Menus
