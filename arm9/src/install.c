@@ -423,21 +423,21 @@ bool install(char* fpath, bool systemTitle)
 		{
 			//tid without region
 			u32 tidLow = (h->tid_low & 0xFFFFFF00);
-			if (!sdnandMode && (
-				(h->tid_high == 0x00030005 && (
-					tidLow == 0x484e4400 || // DS Download Play
-					tidLow == 0x484e4500 || // PictoChat
-					tidLow == 0x484e4900 || // Nintendo DSi Camera
-					tidLow == 0x484e4a00 || // Nintendo Zone
-					tidLow == 0x484e4b00    // Nintendo DSi Sound
-				)) || (h->tid_high == 0x00030015 && (
-					tidLow == 0x484e4200 || // System Settings
-					tidLow == 0x484e4600    // Nintendo DSi Shop
-				))) && (
-					(h->tid_low & 0xFF) == region || //only blacklist console region
-					(h->tid_low & 0xFF) == 'A' ||    //and 'A' (all region)
-					region == 0                      //if the region check failed somehow, blacklist everything
-				))
+			// if (!sdnandMode && (
+				// (h->tid_high == 0x00030005 && (
+					// // tidLow == 0x484e4400 || // DS Download Play
+					// tidLow == 0x484e4500 || // PictoChat
+					// tidLow == 0x484e4900 || // Nintendo DSi Camera
+					// tidLow == 0x484e4a00 || // Nintendo Zone
+					// tidLow == 0x484e4b00    // Nintendo DSi Sound
+				//)) || (h->tid_high == 0x00030015 && (
+					// tidLow == 0x484e4200 || // System Settings
+					// tidLow == 0x484e4600    // Nintendo DSi Shop
+				//))) && (
+					//(h->tid_low & 0xFF) == region || //only blacklist console region
+					//(h->tid_low & 0xFF) == 'A' ||    //and 'A' (all region)
+					//region == 0                      //if the region check failed somehow, blacklist everything
+				//))
 			{
 				//check if title exists, if it does then show any error
 				//otherwise allow reinstalling it
